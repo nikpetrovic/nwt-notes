@@ -4,6 +4,7 @@
 package org.nikpetrovic.nwtnotes.foundation.services;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -23,14 +24,6 @@ public abstract class AbstractGenericService<T, ID extends Serializable, K exten
 
     @Override
     @Transactional
-    public T create(T entity) {
-	LOGGER.info(String.format("Creating entity: %s.", entity));
-	T newEntity = getRepository().saveAndFlush(entity);
-	return newEntity;
-    }
-
-    @Override
-    @Transactional
     public List<T> findAll() {
 	LOGGER.info("Getting all entities.");
 	List<T> entities = getRepository().findAll();
@@ -42,6 +35,22 @@ public abstract class AbstractGenericService<T, ID extends Serializable, K exten
     public T findById(ID id) {
 	LOGGER.info(String.format("Getting entity with id: %d.", id));
 	return getRepository().findOne(id);
+    }
+
+    @Override
+    @Transactional
+    public T save(T entity) {
+	LOGGER.info(String.format("Saving entity: %s.", entity));
+	T newEntity = getRepository().saveAndFlush(entity);
+	return newEntity;
+    }
+
+    @Override
+    @Transactional
+    public List<T> saveAll(Collection<T> entities) {
+	LOGGER.info(String.format("Saving entities."));
+	List<T> newEntities = getRepository().save(entities);
+	return newEntities;
     }
 
     protected abstract K getRepository();

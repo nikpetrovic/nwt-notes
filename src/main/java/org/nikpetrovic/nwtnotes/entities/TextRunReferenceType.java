@@ -9,5 +9,5 @@ package org.nikpetrovic.nwtnotes.entities;
  *
  */
 public enum TextRunReferenceType {
-    FOOTNOTE, VERSE_REFERENCE;
+    FOOTNOTE, REFERENCED_VERSE;
 }

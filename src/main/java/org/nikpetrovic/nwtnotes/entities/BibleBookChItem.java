@@ -12,6 +12,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,9 +24,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbl_bible_book_ch_item")
 public class BibleBookChItem extends AbstractEntity<Integer> {
+    private BibleBookCh _bibleBookCh;
     private Integer _orderNo;
     private List<TextRun> _textRuns;
     private BibleBookChItemType _type;
+
+    @ManyToOne
+    @JoinColumn(name = "bible_book_ch_id")
+    public BibleBookCh getBibleBookCh() {
+	return _bibleBookCh;
+    }
 
     @Column(name = "order_no", nullable = false)
     public Integer getOrderNo() {
@@ -42,6 +50,10 @@ public class BibleBookChItem extends AbstractEntity<Integer> {
     @Enumerated(EnumType.STRING)
     public BibleBookChItemType getType() {
 	return _type;
+    }
+
+    public void setBibleBookCh(BibleBookCh bibleBookCh) {
+	_bibleBookCh = bibleBookCh;
     }
 
     public void setOrderNo(Integer orderNo) {

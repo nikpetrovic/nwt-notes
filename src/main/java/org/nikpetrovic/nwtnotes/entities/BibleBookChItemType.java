@@ -9,5 +9,5 @@ package org.nikpetrovic.nwtnotes.entities;
  *
  */
 public enum BibleBookChItemType {
-    TITLE, SUBTITLE, VERSE;
+    PARAGRAPH_TEXT, SUBTITLE, TITLE;
 }

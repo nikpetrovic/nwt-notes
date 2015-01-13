@@ -29,7 +29,7 @@ public class Bible extends AbstractEntity<Integer> {
     private String _title;
     private String _year;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "bible_id")
     public Set<BibleBook> getBibleBooks() {
 	return _bibleBooks;

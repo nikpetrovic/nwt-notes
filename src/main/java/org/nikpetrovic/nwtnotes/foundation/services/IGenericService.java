@@ -4,6 +4,7 @@
 package org.nikpetrovic.nwtnotes.foundation.services;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -12,9 +13,11 @@ import java.util.List;
  *
  */
 public interface IGenericService<T, ID extends Serializable> {
-    public T create(T entity);
+    List<T> findAll();
 
-    public List<T> findAll();
+    T findById(ID id);
 
-    public T findById(ID id);
+    T save(T entity);
+
+    List<T> saveAll(Collection<T> entities);
 }
