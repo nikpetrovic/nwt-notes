@@ -59,7 +59,7 @@ public class SetupBean {
     @Autowired
     private ILanguageService _languageService;
 
-    @PostConstruct
+//    @PostConstruct
     public void init() {
 	LOGGER.info("################ INITIALIZATION STARTED ###################");
 
