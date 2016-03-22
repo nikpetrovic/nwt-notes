@@ -59,7 +59,7 @@ public class SetupBean {
     @Autowired
     private ILanguageService _languageService;
 
-//    @PostConstruct
+    @PostConstruct
     public void init() {
 	LOGGER.info("################ INITIALIZATION STARTED ###################");
 
@@ -67,16 +67,16 @@ public class SetupBean {
 
 	initializeBibleBookCodes();
 
-//	int attempts = 0;
-//	while (attempts < 20) {
+	int attempts = 0;
+	while (attempts < 20) {
 	    try {
-//		LOGGER.debug("Attempt: " + attempts + 1);
+		LOGGER.debug("Attempt: " + attempts + 1);
 		downloadBibles();
 	    } catch (IOException e) {
-//		LOGGER.error("Error downloading bible(s).", e);
-//		attempts++;
+		LOGGER.error("Error downloading bible(s).", e);
+		attempts++;
 	    }
-//	}
+	}
 
 	LOGGER.info("############### INITIALIZATION FINISHED ###################");
     }

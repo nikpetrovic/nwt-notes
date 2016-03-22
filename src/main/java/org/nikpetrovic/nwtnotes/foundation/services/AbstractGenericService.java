@@ -23,7 +23,6 @@ public abstract class AbstractGenericService<T, ID extends Serializable, K exten
 	    .getLogger(AbstractGenericService.class);
 
     @Override
-    @Transactional
     public List<T> findAll() {
 	LOGGER.info("Getting all entities.");
 	List<T> entities = getRepository().findAll();
@@ -31,7 +30,6 @@ public abstract class AbstractGenericService<T, ID extends Serializable, K exten
     }
 
     @Override
-    @Transactional
     public T findById(ID id) {
 	LOGGER.info(String.format("Getting entity with id: %d.", id));
 	return getRepository().findOne(id);
